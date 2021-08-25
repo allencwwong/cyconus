@@ -1,0 +1,14 @@
+.form {
+  margin-top: 100px;
+  max-width: 1200px,
+}
+
+.form .inputType {
+  margin-bottom: 15px;
+}
+
+.form input {
+  margin-left: 10px;
+}
+
+/* add initial values for all input fields */
