@@ -1,17 +1,19 @@
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import Form from './Form';
-import Confirmation from './Confirmation';
+import MultiStepForm from './MultiStepForm';
 import './App.css';
 
 function App() {
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <Route exact path="/" component={Form} />
-        <Route exact path="/confirmation" component={Confirmation} />
-      </BrowserRouter>
+      {/* <BrowserRouter>
+        <Route exact path="/" render={(props) => <Form {...props} initialValues={initialValues} setInitialValues={setInitialValues} />} />
+        <Route exact path="/confirmation" render={(props) => <Confirmation {...props} initialValues={initialValues} setInitialValues={setInitialValues} emptyInitVals={emptyInitVals} />} />
+      </BrowserRouter> */}
+      <MultiStepForm/>
     </div>
   );
 }
 
 export default App;
+
+
