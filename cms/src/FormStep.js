@@ -1,26 +1,22 @@
 import {formInputs} from './formInputs';
 
 const FormStep = (props) => {
-  const { stepNum, setStepNum, handleSubmit, handleChange, handleBlur, values, isSubmitting } = props;
+  const { stepNum, setStepNum, setInitialValues, handleSubmit, handleChange, handleBlur, values, isSubmitting } = props;
   const data = Object.entries(values)
-
   const handleEdit = () => {
     setStepNum(0)
   }
 
   const handleSave = (e) => {
     e.preventDefault();
-    console.log(JSON.stringify(values))
-  }
-
-  const handleConfirmSave = (e) => {
-    e.preventDefault()
-    console.log("confirmed!")
+    console.log(JSON.stringify(values), 'handleSave')
+    setInitialValues(values)
+    setStepNum(1)
   }
 
   if(stepNum === 0) {
     return (
-      <form onSubmit={handleSubmit} className="form">
+      <form onSubmit={handleSave} className="form">
               {formInputs.map((item, idx)=> {
                 return (
                   <div key={item+idx} className="inputType">
@@ -29,12 +25,12 @@ const FormStep = (props) => {
                   </div>
                 )
               })}
-              <button type="submit" disabled={isSubmitting}>Submit</button>
+              <button>Save</button>
       </form>
     )
   } else {
     return (
-      <form onSubmit={handleConfirmSave}>
+      <form onSubmit={handleSubmit}>
         <h2>Confirmation</h2>
         { data.map((item, idx) => {
           return (
@@ -42,7 +38,7 @@ const FormStep = (props) => {
           )
         })}
         <button onClick={handleEdit} >Edit</button>
-        <button onClick={handleSave} >Save</button>
+        <button type="submit" disabled={isSubmitting} >Submit</button>
     </form>
     )
   }

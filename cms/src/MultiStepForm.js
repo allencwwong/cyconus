@@ -16,9 +16,7 @@ const MultiStepForm = () => {
     <Formik
         initialValues={initialValues}
         onSubmit={(values, {setSubmitting}) => {
-          // alert(JSON.stringify(values, null, 2))
-          setInitialValues(values)
-          setStepNum(1)
+          alert(JSON.stringify(values, null, 2))
           setSubmitting(false)
         }}
       >
@@ -29,7 +27,7 @@ const MultiStepForm = () => {
           handleBlur,
           isSubmitting
         }) => (
-          <FormStep stepNum={stepNum} setStepNum={setStepNum} handleSubmit={handleSubmit} handleBlur={handleBlur} handleChange={handleChange} values={values} isSubmitting={isSubmitting}/>
+          <FormStep stepNum={stepNum} setStepNum={setStepNum} setInitialValues={setInitialValues} handleSubmit={handleSubmit} handleBlur={handleBlur} handleChange={handleChange} values={values} isSubmitting={isSubmitting}/>
         )}
       </Formik>
   )
