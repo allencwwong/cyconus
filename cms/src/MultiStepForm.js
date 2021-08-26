@@ -29,17 +29,6 @@ const MultiStepForm = () => {
           handleBlur,
           isSubmitting
         }) => (
-          // <form onSubmit={handleSubmit} className="form">
-          //   {formInputs.map((item, idx)=> {
-          //     return (
-          //       <div key={item+idx} className="inputType">
-          //         <label>{item}</label>
-          //         <input type="text" id={item} name={item} onChange={handleChange} onBlur={handleBlur} value={values[item]}/>
-          //       </div>
-          //     )
-          //   })}
-          //   <button type="submit" disabled={isSubmitting}>Submit</button>
-          // </form>
           <FormStep stepNum={stepNum} setStepNum={setStepNum} handleSubmit={handleSubmit} handleBlur={handleBlur} handleChange={handleChange} values={values} isSubmitting={isSubmitting}/>
         )}
       </Formik>
