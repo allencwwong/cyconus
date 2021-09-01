@@ -1,11 +1,10 @@
-import MultiStepForm from './MultiStepForm';
+import Categories from './Catergories'
 import './App.css';
 
 function App() {
-
   return (
     <div className="App">
-      <MultiStepForm/>
+      <Categories/>
     </div>
   );
 }

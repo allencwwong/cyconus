@@ -1,12 +1,13 @@
-.form {
-  margin-top: 100px;
-  max-width: 1200px,
+
+.form-container {
+  width: 100%;
+  max-width: 900px;
+  padding: 25px;
+  margin: 30px auto;
 }
 
-.form .inputType {
-  margin-bottom: 15px;
-}
-
-.form input {
-  margin-left: 10px;
+.form-container .back-btn {
+  position: absolute;
+  top: 3%;
+  right: 5%;
 }
