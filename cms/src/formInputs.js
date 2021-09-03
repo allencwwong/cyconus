@@ -15,6 +15,5 @@ export const formInputs = [
   "condition",
   "size",
   "note",
-  "option_name",
-  "option_value"
+  "options"
 ]

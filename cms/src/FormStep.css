@@ -1,0 +1,44 @@
+
+.form .inputType {
+  display: grid;
+  text-align: left;
+  grid-template-columns: 150px auto;
+  margin-bottom: 20px;
+  padding: 0 25px;
+}
+
+.form label {
+  display: flex;
+  align-items: center;
+}
+
+.form input {
+  border-radius: 5px;
+  border: 1px solid #989898;
+  height: 30px;
+}
+
+.form .add-option,
+.form .save {
+  display: block;
+  float: right;
+  margin-right: 25px;
+}
+
+.confirm-grid-container {
+  display: grid;
+  grid-template-columns: 120px auto;
+  column-gap: 40px;
+}
+
+.confirm-grid-item1 {
+  text-align: right;
+}
+
+button {
+  background-color: rgb(95, 154, 242);
+  color: #000;
+  border: 1px solid #989898;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
