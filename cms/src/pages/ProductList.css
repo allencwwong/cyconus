@@ -1,0 +1,35 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: auto;
+  margin: 0 auto;
+}
+
+.product-item,
+.product-item-head {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  border-bottom: 1px solid #aaa;
+}
+
+.product-item p,
+.product-item .btn-wrapper {
+  align-self: center;
+}
+
+.product-item-head {
+  font-weight: 700;
+  padding-bottom: 15px;
+}
+
+.product-item .product-avatar {
+  width: 80px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
