@@ -3,10 +3,29 @@
   margin: 0 auto;
 }
 
+.container h2 {
+  display: inline-block;
+  margin-right: 50px;
+}
+
 .product-container {
   display: grid;
   grid-template-columns: auto;
   margin: 0 auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+}
+
+.container nav {
+  list-style-type: none;
+  margin-bottom: 20px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
 
 .product-item,
@@ -32,4 +51,5 @@
   margin: 0 auto;
   padding: 10px 0;
 }
+
 
