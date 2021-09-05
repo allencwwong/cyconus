@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, FieldArray } from 'formik';
 import {formInputs} from './formInputs';
-import OptionVal from './OptionVal';
+import Options from './Options';
 import './FormStep.css';
 
 const FormStep = (props) => {
@@ -40,7 +40,7 @@ const FormStep = (props) => {
               <FieldArray name="options" render={arrayHelpers => (
                 <React.Fragment>
                   {values[item].map((option, idx) => {
-                    return (<OptionVal key={option['option_name']+idx} values={option} idx={idx} /> )
+                    return (<Options key={option['option_name']+idx} values={option} idx={idx} /> )
                   })}
                   <button className="add-option" onClick={(e) => {handleAddOption(e, arrayHelpers)}}>Add Option Field</button>
                 </React.Fragment>
