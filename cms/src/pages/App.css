@@ -4,6 +4,7 @@ button {
   border: 1px solid rgb(95, 154, 242);
   padding: 8px 16px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 button:hover {
@@ -11,5 +12,26 @@ button:hover {
   color: #fff;
 }
 
+button.plain,
+.btn-group-plain button {
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 0;
+}
+
+button.plain:hover,
+.btn-group-plain button:hover {
+  border: none;
+  background-color: transparent;
+  color: rgb(95, 154, 242);
+  border-radius: 0;
+  border-bottom: 2px solid rgb(95, 154, 242);
+}
+
+nav button.active {
+  border-bottom: 2px solid rgb(95, 154, 242);
+}
 
 

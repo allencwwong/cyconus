@@ -1,0 +1,35 @@
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.search input {
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  margin: 0 5px;
+}
+
+.search input:focus {
+  outline: none;
+  border-bottom: 1px solid rgb(95, 154, 242);
+}
+
+.search .pagination {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: end;
+  align-items: end;
+  margin-left: auto;
+}
+
+.search .pagination button {
+  float: left;
+  padding: 8px 16px;
+  align-self: center;
+  color: #000;
+}
+
+.pagination .next-btn {
+  justify-self: left;
+}
