@@ -15,8 +15,12 @@ const Categories = () => {
   } else {
     return (
       <div className="cate-container">
-        <div onClick={handleClickCategory} >Chairs</div>
-        <div onClick={handleClickCategory} >Cubicles</div>
+        <button onClick={handleClickCategory} >Seating</button>
+        <button onClick={handleClickCategory} >Filing</button>
+        <button onClick={handleClickCategory} >Cubicles</button>
+        <button onClick={handleClickCategory} >Desks and Credenzas</button>
+        <button onClick={handleClickCategory} >Conference Rooms</button>
+        <button onClick={handleClickCategory} >Reception</button>
       </div>
     )
   }

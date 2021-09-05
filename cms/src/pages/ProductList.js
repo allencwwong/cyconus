@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
+import Pagination from '../components/Pagination';
 import './ProductList.css';
 
 const ProductList = () => {
@@ -9,7 +10,7 @@ const ProductList = () => {
   const history = useHistory();
 
   const handleAddProduct = () => {
-    history.push("/categories")
+    history.push("/catergories")
   }
 
   useEffect(() => {
@@ -25,8 +26,11 @@ const ProductList = () => {
   return (
     <div className="container">
       <header>
-        <h2>Product List</h2>
-        <button onClick={handleAddProduct} >Add New Product</button>
+        <div className="header-top">
+          <h2>Product List</h2>
+          <button onClick={handleAddProduct}>Add New Product</button>
+          <SearchBar data={data} setFilteredData={setFilteredData} />
+        </div>
         <nav className="btn-group-plain">
           <li>
             <button className="active">All Products</button>
@@ -51,13 +55,13 @@ const ProductList = () => {
           </li>
         </nav>
         <div className="product-item-head-container">
-          <SearchBar data={data} setFilteredData={setFilteredData} />
           <div className="product-item-head">
             <p>pID</p>
             <p>Image</p>
             <p>Name</p>
             <p>Price 1</p>
             <p>Price 2</p>
+            <Pagination data={data} setFilteredData={setFilteredData}/>
           </div>
         </div>
       </header>

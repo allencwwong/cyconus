@@ -1,13 +1,14 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Categories from '../components/Catergories';
 import ProductList from '../pages/ProductList';
+// import MultiStepForm from '../components/MultiStepForm'
 import './App.css';
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/categories">
+        <Route path="/catergories">
           <Categories />
         </Route>
         <Route path="/">

@@ -4,4 +4,10 @@
   max-width: 1200px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.cate-container button {
+  padding: 20px 0;
 }
