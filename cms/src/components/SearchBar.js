@@ -20,6 +20,7 @@ const SearchBar = (props) => {
 
   const handleClearClick = () => {
     document.getElementById('product-search').value = ""
+    setFilteredData(data.slice(0, 25))
   }
 
   const debouncedChangeHandler = useCallback(

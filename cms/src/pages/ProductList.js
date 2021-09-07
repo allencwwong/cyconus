@@ -11,7 +11,15 @@ const ProductList = () => {
   const history = useHistory();
 
   const handleAddProduct = () => {
-    history.push("/catergories")
+    history.push("/categories")
+  }
+
+  const handleEditProduct = (id, category) => {
+    history.push(`/edit/${category}/${id}`)
+  }
+
+  const handleDeleteProduct = () => {
+
   }
 
   useEffect(() => {
@@ -20,6 +28,7 @@ const ProductList = () => {
       .then(dataAPI => {
         setData(dataAPI)
         let first25Products = dataAPI.slice(0, 25)
+        console.log(first25Products)
         setFilteredData(first25Products)
       })
   }, [])
@@ -76,10 +85,10 @@ const ProductList = () => {
               <p>{`$${product.price1}`}</p>
               <p>{product.price2 ? `$${product.price2}` : "-"}</p>
               <div className="btn-wrapper">
-                <button>Edit</button>
+                <button onClick={() => {handleEditProduct(product.id, product.category)}}>Edit</button>
               </div>
               <div className="btn-wrapper">
-                <button>Delete</button>
+                <button onClick={() => {handleDeleteProduct(product.id, product.category)}} >Delete</button>
               </div>
             </div>
           )

@@ -1,15 +1,18 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Categories from '../components/Catergories';
-import ProductList from '../pages/ProductList';
-// import MultiStepForm from '../components/MultiStepForm'
+import Categories from '../components/Categories';
+import ProductList from './ProductList';
+import EditProduct from './EditProduct';
 import './App.css';
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/catergories">
+        <Route path="/categories">
           <Categories />
+        </Route>
+        <Route path="/edit/:category/:id">
+          <EditProduct />
         </Route>
         <Route path="/">
           <ProductList />

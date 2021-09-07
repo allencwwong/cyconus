@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useHistory } from "react-router-dom";
 
 import MultiStepForm from './MultiStepForm';
-import './Catergories.css';
+import './Categories.css';
 
 const Categories = () => {
   let history = useHistory()
@@ -29,7 +29,7 @@ const Categories = () => {
   } else {
     return (
       <div className="cate-container">
-        <button onClick={handleClickCategory} >Seating</button>
+        <button onClick={handleClickCategory} >Chairs</button>
         <button onClick={handleClickCategory} >Filing</button>
         <button onClick={handleClickCategory} >Cubicles</button>
         <button onClick={handleClickCategory} >Desks and Credenzas</button>

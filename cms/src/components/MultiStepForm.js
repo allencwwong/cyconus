@@ -5,7 +5,7 @@ import FormStep from './FormStep';
 import './MultiStepForm.css';
 
 const MultiStepForm = (props) => {
-  const { handleClickBack, selectedCategory } = props
+  const { handleClickBack, selectedCategory, formData } = props
 
   let emptyInitVals = {}
   formInputs.forEach(item => {
@@ -15,6 +15,8 @@ const MultiStepForm = (props) => {
       emptyInitVals[item] = ""
     }
   })
+
+  //to do: back button function
 
   const [initialValues, setInitialValues] = useState(emptyInitVals)
   const [stepNum, setStepNum] = useState(0)
