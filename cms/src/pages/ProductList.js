@@ -7,6 +7,7 @@ import './ProductList.css';
 const ProductList = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([])
+  const [viewCategory, setViewCatergory] = useState('chairs')
   const history = useHistory();
 
   const handleAddProduct = () => {
@@ -14,7 +15,7 @@ const ProductList = () => {
   }
 
   useEffect(() => {
-    fetch('https://www.cyconus.com/products/api/chairs.php')
+    fetch(`https://www.cyconus.com/products/api/productlist/?category=${viewCategory}`)
       .then(res => res.json())
       .then(dataAPI => {
         setData(dataAPI)
