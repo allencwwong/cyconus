@@ -5,7 +5,7 @@ import FormStep from './FormStep';
 import './MultiStepForm.css';
 
 const MultiStepForm = (props) => {
-  const { setShowForm, selectedCategory } = props
+  const { handleClickBack, selectedCategory } = props
 
   let emptyInitVals = {}
   formInputs.forEach(item => {
@@ -22,7 +22,7 @@ const MultiStepForm = (props) => {
   return (
     <section className="form-container">
       <h2>{`Add Product - ${selectedCategory}`}</h2>
-      <button onClick={() => setShowForm(false)} className="back-btn">Back</button>
+      <button onClick={() => handleClickBack()} className="back-btn">Back</button>
       <Formik
           initialValues={initialValues}
           onSubmit={(values, {setSubmitting}) => {

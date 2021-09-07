@@ -1,17 +1,31 @@
 import { useState } from 'react';
+import { useHistory } from "react-router-dom";
+
 import MultiStepForm from './MultiStepForm';
 import './Catergories.css';
 
 const Categories = () => {
+  let history = useHistory()
   const [showForm, setShowForm] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("")
   const handleClickCategory = (e) => {
     setSelectedCategory(e.target.innerHTML)
     setShowForm(true)
+    history.push({
+      pathname: '/catergories',
+      search: `?category=${e.target.innerHTML.toLowerCase()}`
+    })
+  }
+
+  const handleClickBack = () =>{
+    setShowForm(false)
+    history.push({
+      pathname: '/catergories',
+    })
   }
 
   if(showForm) {
-    return <MultiStepForm setShowForm={setShowForm} selectedCategory={selectedCategory}/>
+    return <MultiStepForm setShowForm={setShowForm} handleClickBack={handleClickBack} selectedCategory={selectedCategory}/>
   } else {
     return (
       <div className="cate-container">
