@@ -1,6 +1,7 @@
 .search {
-  display: flex;
+  display: inline-block;
   align-items: center;
+  margin-left: auto;
 }
 
 .search input {
@@ -15,21 +16,3 @@
   border-bottom: 1px solid rgb(95, 154, 242);
 }
 
-.search .pagination {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: end;
-  align-items: end;
-  margin-left: auto;
-}
-
-.search .pagination button {
-  float: left;
-  padding: 8px 16px;
-  align-self: center;
-  color: #000;
-}
-
-.pagination .next-btn {
-  justify-self: left;
-}
