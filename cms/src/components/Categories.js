@@ -12,7 +12,7 @@ const Categories = () => {
     setSelectedCategory(e.target.innerHTML)
     setShowForm(true)
     history.push({
-      pathname: '/catergories',
+      pathname: '/categories',
       search: `?category=${e.target.innerHTML.toLowerCase()}`
     })
   }
@@ -20,12 +20,12 @@ const Categories = () => {
   const handleClickBack = () =>{
     setShowForm(false)
     history.push({
-      pathname: '/catergories',
+      pathname: '/categories',
     })
   }
 
   if(showForm) {
-    return <MultiStepForm setShowForm={setShowForm} handleClickBack={handleClickBack} selectedCategory={selectedCategory}/>
+    return <MultiStepForm setShowForm={setShowForm} handleClickBack={handleClickBack} selectedCategory={selectedCategory}  submitType="create"/>
   } else {
     return (
       <div className="cate-container">

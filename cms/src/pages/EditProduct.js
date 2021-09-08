@@ -1,22 +1,37 @@
 import {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import MultiStepForm from '../components/MultiStepForm';
 
 const EditProduct = () => {
-  const [formData, setFormData] = useState(null);
+  const [formInput, setFormInput] = useState(null);
   let {category, id} = useParams()
+  const history = useHistory()
+
+  const handleClickBack = () => {
+    history.push('/')
+  }
 
   useEffect(() => {
     fetch(`https://www.cyconus.com/products/api/product/?category=${category}&id=${id}`)
       .then(res => res.json())
-      .then(data => setFormData(data))
+      .then(data => {
+        for(let key in data) {
+          if(!data[key]) data[key] = ""
+        }
+        data['options'] = []
+        setFormInput(data)
+      })
   }, [])
 
-  console.log(formData)
-
-  return (
-    <MultiStepForm selectedCategory={category} formData={formData}/>
-  )
+  if(formInput) {
+    return (
+      <MultiStepForm selectedCategory={category} formInput={formInput} handleClickBack={handleClickBack} submitType="update" />
+    )
+  } else {
+    return(
+      <p>loading....</p>
+    )
+  }
 }
 
 export default EditProduct;

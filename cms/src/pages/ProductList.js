@@ -2,12 +2,15 @@ import {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import Pagination from '../components/Pagination';
+import DeleteModal from '../components/DeleteModal';
 import './ProductList.css';
 
 const ProductList = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([])
-  const [viewCategory, setViewCatergory] = useState('chairs')
+  const [viewCategory, setViewCategory] = useState('chairs')
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
+  const [deleteItem, setDeleteItem] = useState({})
   const history = useHistory();
 
   const handleAddProduct = () => {
@@ -18,8 +21,9 @@ const ProductList = () => {
     history.push(`/edit/${category}/${id}`)
   }
 
-  const handleDeleteProduct = () => {
-
+  const handleDeleteProduct = (id, category) => {
+    setDeleteItem({id: id, category: category})
+    setShowDeleteModal(true)
   }
 
   useEffect(() => {
@@ -28,7 +32,6 @@ const ProductList = () => {
       .then(dataAPI => {
         setData(dataAPI)
         let first25Products = dataAPI.slice(0, 25)
-        console.log(first25Products)
         setFilteredData(first25Products)
       })
   }, [])
@@ -68,7 +71,7 @@ const ProductList = () => {
           <div className="product-item-head">
             <p>pID</p>
             <p>Image</p>
-            <p>Name</p>
+            <p>Brand</p>
             <p>Price 1</p>
             <p>Price 2</p>
             <Pagination data={data} setFilteredData={setFilteredData}/>
@@ -80,7 +83,8 @@ const ProductList = () => {
           return (
             <div className="product-item" key={product.id}>
               <p>{product.pid}</p>
-              <img src={product?.img || 'https://cyconus.com/products/uploader/uploads/no-img.jpg'} alt="product view" className="product-avatar" />
+              {/* <img src={product?.img || 'https://cyconus.com/products/uploader/uploads/no-img.jpg'} alt="product view" className="product-avatar" /> */}
+              <p>Image</p>
               <p>{product.brand}</p>
               <p>{`$${product.price1}`}</p>
               <p>{product.price2 ? `$${product.price2}` : "-"}</p>
@@ -94,6 +98,7 @@ const ProductList = () => {
           )
         })}
       </div>
+      { showDeleteModal ? <DeleteModal setShowDeleteModal={setShowDeleteModal} deleteItem={deleteItem}/> : <></>}
     </div>
   )
 }
