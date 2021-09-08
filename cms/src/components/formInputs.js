@@ -1,10 +1,13 @@
+// convert to dynamic titles later
+
 export const formInputs = [
-  "id",
+  "pid",
   "brand",
   "model",
   "type",
   "color",
-  "img_name",
+  "img1",
+  "img2",
   "num_of_imgs",
   "description",
   "qty",
@@ -12,8 +15,10 @@ export const formInputs = [
   "price1",
   "price_name2",
   "price2",
-  "condition",
+  "item_condition",
   "size",
+  "section",
   "note",
-  "options"
+  "options",
+  "files"
 ]

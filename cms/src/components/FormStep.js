@@ -5,7 +5,7 @@ import Options from './Options';
 import './FormStep.css';
 
 const FormStep = (props) => {
-  const { stepNum, setStepNum, setInitialValues, handleSubmit, handleChange, handleBlur, values, isSubmitting } = props;
+  const { stepNum, setStepNum, setInitialValues, handleSubmit, handleChange, handleBlur, values, isSubmitting, setFieldValue } = props;
   const data = Object.entries(values)
 
   const handleEdit = (e) => {
@@ -29,12 +29,43 @@ const FormStep = (props) => {
       <Form onSubmit={handleSave} className="form">
         {formInputs.map((item, idx)=> {
           if(item !== 'options') {
-            return (
-              <div key={item+idx} className="inputType">
-                <label>{item}</label>
-                <input type="text" id={item} name={item} onChange={handleChange} onBlur={handleBlur} value={values[item]}/>
-              </div>
-            )
+            if(item === 'description') {
+              return (
+                <div key={item+idx} className="inputType">
+                  <label>{item}</label>
+                  <textarea type="text" id={item} name={item} onChange={handleChange} onBlur={handleBlur} value={values[item]} rows="5"/>
+                </div>
+              )
+            } else {
+              let inputAttr = {
+                type: 'text',
+                id: item,
+                name: item,
+                onChange: handleChange,
+                onBlur: handleBlur,
+                value: values[item]
+              }
+              if(item === 'img1' || item === 'img2') {
+                delete inputAttr.value
+                inputAttr.id = 'file'
+                inputAttr.type = 'file'
+                inputAttr['accept'] = 'image/*'
+                inputAttr.name = 'images[]'
+                inputAttr.onChange = (acceptedFiles) => {
+                  if(acceptedFiles.length === 0 ) return
+                  setFieldValue("files", values.files.concat(acceptedFiles));
+                }
+                // inputAttr.onChange = (event) => {
+                //   setFieldValue("file", event.currentTarget.files[0]);
+                // }
+              }
+              return (
+                <div key={item+idx} className="inputType">
+                  <label>{item}</label>
+                  <input {...inputAttr}/>
+                </div>
+              )
+            }
           } else {
             return (
               <FieldArray name="options" render={arrayHelpers => (
@@ -52,11 +83,12 @@ const FormStep = (props) => {
       </Form>
     )
   } else {
+    console.log(data)
     return (
       <Form onSubmit={handleSubmit} className="confirm">
         <h2>Confirmation</h2>
           { data.map((item, idx) => {
-            if(item[0] !== 'options') {
+            if(item[0] !== 'options' && item[0] !== 'files') {
               return (
                 <div key={item + idx} className="confirm-grid-container">
                   <p className="confirm-grid-item1">{item[0] + ": "}</p>

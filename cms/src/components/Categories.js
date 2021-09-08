@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useHistory } from "react-router-dom";
 
 import MultiStepForm from './MultiStepForm';
-import './Catergories.css';
+import './Categories.css';
 
 const Categories = () => {
   let history = useHistory()
@@ -12,7 +12,7 @@ const Categories = () => {
     setSelectedCategory(e.target.innerHTML)
     setShowForm(true)
     history.push({
-      pathname: '/catergories',
+      pathname: '/categories',
       search: `?category=${e.target.innerHTML.toLowerCase()}`
     })
   }
@@ -20,16 +20,16 @@ const Categories = () => {
   const handleClickBack = () =>{
     setShowForm(false)
     history.push({
-      pathname: '/catergories',
+      pathname: '/categories',
     })
   }
 
   if(showForm) {
-    return <MultiStepForm setShowForm={setShowForm} handleClickBack={handleClickBack} selectedCategory={selectedCategory}/>
+    return <MultiStepForm setShowForm={setShowForm} handleClickBack={handleClickBack} selectedCategory={selectedCategory}  submitType="create"/>
   } else {
     return (
       <div className="cate-container">
-        <button onClick={handleClickCategory} >Seating</button>
+        <button onClick={handleClickCategory} >Chairs</button>
         <button onClick={handleClickCategory} >Filing</button>
         <button onClick={handleClickCategory} >Cubicles</button>
         <button onClick={handleClickCategory} >Desks and Credenzas</button>
