@@ -3,7 +3,7 @@ import {useParams, useHistory} from 'react-router-dom';
 import MultiStepForm from '../components/MultiStepForm';
 
 const EditProduct = () => {
-  const [formInput, setFormInput] = useState(null);
+  const [formInputData, setFormInputData] = useState(null);
   let {category, id} = useParams()
   const history = useHistory()
 
@@ -18,14 +18,15 @@ const EditProduct = () => {
         for(let key in data) {
           if(!data[key]) data[key] = ""
         }
+        console.log(data)
         data['options'] = []
-        setFormInput(data)
+        setFormInputData(data)
       })
   }, [])
 
-  if(formInput) {
+  if(formInputData) {
     return (
-      <MultiStepForm selectedCategory={category} formInput={formInput} handleClickBack={handleClickBack} submitType="update" />
+      <MultiStepForm selectedCategory={category} formInputData={formInputData} handleClickBack={handleClickBack} submitType="update" />
     )
   } else {
     return(

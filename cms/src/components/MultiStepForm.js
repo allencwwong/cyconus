@@ -3,11 +3,13 @@ import {useHistory} from 'react-router-dom';
 import { Formik } from 'formik';
 import {formInputs} from './formInputs';
 import FormStep from './FormStep';
+import ImageUploader from './ImageUploader';
 import './MultiStepForm.css';
 
 const MultiStepForm = (props) => {
-  const { handleClickBack, selectedCategory, formInput, submitType } = props
+  const { handleClickBack, selectedCategory, formInputData, submitType } = props
   const history = useHistory();
+  // create emptyInitVals for initial state (below)
   let emptyInitVals = {}
   formInputs.forEach(item => {
     if(item === 'options' || item === 'files') {
@@ -16,25 +18,31 @@ const MultiStepForm = (props) => {
       emptyInitVals[item] = ""
     }
   })
+  const [initialValues, setInitialValues] = useState(formInputData || emptyInitVals)
+  const [stepNum, setStepNum] = useState(0)
+  const [uploadedImages,setUploadedImages] = useState([])
 
   //to do: back button function
 
-  const [initialValues, setInitialValues] = useState(formInput || emptyInitVals)
-  const [stepNum, setStepNum] = useState(0)
   const handleSubmit = (values, setSubmitting) => {
     setSubmitting(false)
+    console.log('sub')
     let formData = new FormData()
-    for(let key in values) {
-      console.log(values)
-      if(key === 'img1') {
-        console.log(values[key].files.name)
-        console.log(values.key.files)
-        formData.append('images[]', values[key]['files'], values[key]['files']['name'])
-      } else if(key !== 'files') {
-        formData.append(key, values[key])
-      }
+    console.log(uploadedImages)
+    if(uploadedImages.length > 0) {
+      console.log(uploadedImages)
+      uploadedImages.forEach((file,idx) => {
+        if(file){
+          formData.append('imagesIdx[]',  idx)
+          formData.append('images[]', file, file.name )
+        }
+      })
     }
-    let url = submitType === "update" ? `https://www.cyconus.com/products/api/update/?category=${selectedCategory}&id=${formInput.id}&api_key=Rental123` : `https://www.cyconus.com/products/api/new/?category=${selectedCategory.toLowerCase()}&api_key=Rental123`
+
+    for(let key in values) {
+      formData.append(key, values[key])
+    }
+    let url = submitType === "update" ? `https://www.cyconus.com/products/api/update/?category=${selectedCategory}&id=${formInputData.id}&api_key=Rental123` : `https://www.cyconus.com/products/api/new/?category=${selectedCategory.toLowerCase()}&api_key=Rental123`
 
     fetch(url, {
       method: 'POST',
@@ -50,7 +58,6 @@ const MultiStepForm = (props) => {
       });
 
   }
-
   return (
     <section className="form-container">
       <h2>{`Add Product - ${selectedCategory}`}</h2>
@@ -67,9 +74,10 @@ const MultiStepForm = (props) => {
             isSubmitting,
             setFieldValue
           }) => (
-            <FormStep stepNum={stepNum} setStepNum={setStepNum} setInitialValues={setInitialValues} handleSubmit={handleSubmit} handleBlur={handleBlur} handleChange={handleChange} values={values} isSubmitting={isSubmitting} setFieldValue={setFieldValue}/>
+            <FormStep stepNum={stepNum} setStepNum={setStepNum} setInitialValues={setInitialValues} handleSubmit={handleSubmit} handleBlur={handleBlur} handleChange={handleChange} values={values} isSubmitting={isSubmitting} setFieldValue={setFieldValue} />
           )}
-        </Formik>
+      </Formik>
+      <ImageUploader formInputData={formInputData} setUploadedImages={setUploadedImages} uploadedImages={uploadedImages} />
     </section>
   )
 }

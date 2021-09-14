@@ -6,8 +6,6 @@ export const formInputs = [
   "model",
   "type",
   "color",
-  "img1",
-  "img2",
   "num_of_imgs",
   "description",
   "qty",
@@ -20,5 +18,4 @@ export const formInputs = [
   "section",
   "note",
   "options",
-  "files"
 ]

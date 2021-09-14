@@ -1,0 +1,29 @@
+.img-container{
+  border: 1px solid #aaa;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  overflow: hidden
+}
+
+.img-container .img-upload{
+  border: 1px solid #aaa;
+  padding: 5px;
+  height: 300px;
+  margin-left: 15px;
+  margin-bottom: 20px;
+  display: none;
+}
+
+.img-container .img-upload.active{
+  display: inherit
+}
+
+.img-container .img-upload img{
+  width: 100%
+}
+
+.img-upload.img-upload-add{
+  text-align: center;
+  display: inherit;
+}
