@@ -5,8 +5,9 @@ import Options from './Options';
 import './FormStep.css';
 
 const FormStep = (props) => {
-  const { stepNum, setStepNum, setInitialValues, handleSubmit, handleChange, handleBlur, values, isSubmitting, setFieldValue } = props;
+  const { stepNum, setStepNum, setInitialValues, handleSubmit, handleChange, handleBlur, values, isSubmitting, setImgsFileData, imgsFileData } = props;
   const data = Object.entries(values)
+  const imgs = ['img1', 'img2', 'img3']
 
   const handleEdit = (e) => {
     e.preventDefault();
@@ -25,6 +26,7 @@ const FormStep = (props) => {
   }
 
   if(stepNum === 0) {
+    console.log('step 0')
     return (
       <Form onSubmit={handleSave} className="form">
         {formInputs.map((item, idx)=> {
@@ -45,20 +47,7 @@ const FormStep = (props) => {
                 onBlur: handleBlur,
                 value: values[item]
               }
-              if(item === 'img1' || item === 'img2') {
-                delete inputAttr.value
-                inputAttr.id = 'file'
-                inputAttr.type = 'file'
-                inputAttr['accept'] = 'image/*'
-                inputAttr.name = 'images[]'
-                inputAttr.onChange = (acceptedFiles) => {
-                  if(acceptedFiles.length === 0 ) return
-                  setFieldValue("files", values.files.concat(acceptedFiles));
-                }
-                // inputAttr.onChange = (event) => {
-                //   setFieldValue("file", event.currentTarget.files[0]);
-                // }
-              }
+
               return (
                 <div key={item+idx} className="inputType">
                   <label>{item}</label>
@@ -69,12 +58,12 @@ const FormStep = (props) => {
           } else {
             return (
               <FieldArray name="options" render={arrayHelpers => (
-                <React.Fragment>
+                <>
                   {values[item].map((option, idx) => {
                     return (<Options key={option['option_name']+idx} values={option} idx={idx} /> )
                   })}
-                  <button className="add-option" onClick={(e) => {handleAddOption(e, arrayHelpers)}}>Add Option Field</button>
-                </React.Fragment>
+                  <button key={idx} className="add-option" onClick={(e) => {handleAddOption(e, arrayHelpers)}}>Add Option Field</button>
+                </>
               )} />
             )
           }
