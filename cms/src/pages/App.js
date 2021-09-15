@@ -8,11 +8,14 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/categories">
+        <Route path="/products/cms/v1/categories">
           <Categories />
         </Route>
-        <Route path="/edit/:category/:id">
+        <Route path="/products/cms/v1/edit/:category/:id">
           <EditProduct />
+        </Route>
+        <Route path="/products/cms/v1">
+          <ProductList />
         </Route>
         <Route path="/">
           <ProductList />

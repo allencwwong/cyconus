@@ -12,16 +12,18 @@ const Categories = () => {
     setSelectedCategory(e.target.innerHTML)
     setShowForm(true)
     history.push({
-      pathname: '/categories',
+      pathname: '/products/cms/v1/categories',
       search: `?category=${e.target.innerHTML.toLowerCase()}`
     })
   }
 
-  const handleClickBack = () =>{
-    setShowForm(false)
-    history.push({
-      pathname: '/categories',
-    })
+  const handleClickBack = (toPage) =>{
+    if(toPage === 'catrgories'){
+      setShowForm(false)
+      history.push('/products/cms/v1/categories')
+    }else{
+      history.push('/products/cms/v1')
+    }
   }
 
   if(showForm) {
@@ -30,11 +32,12 @@ const Categories = () => {
     return (
       <div className="cate-container">
         <button onClick={handleClickCategory} >Chairs</button>
-        <button onClick={handleClickCategory} >Filing</button>
+        <button onClick={ handleClickBack } className="back-btn">Back</button>
+        {/* <button onClick={handleClickCategory} >Filing</button>
         <button onClick={handleClickCategory} >Cubicles</button>
         <button onClick={handleClickCategory} >Desks and Credenzas</button>
         <button onClick={handleClickCategory} >Conference Rooms</button>
-        <button onClick={handleClickCategory} >Reception</button>
+        <button onClick={handleClickCategory} >Reception</button> */}
       </div>
     )
   }
