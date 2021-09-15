@@ -71,7 +71,7 @@ const MultiStepForm = (props) => {
   return (
     <section className="form-container">
       <h2>{`Add Product - ${selectedCategory}`}</h2>
-      <button onClick={() => handleClickBack()} className="back-btn">Back</button>
+      <button onClick={() => handleClickBack('catrgories')} className="back-btn">Back</button>
       <Formik
           initialValues={initialValues}
           onSubmit={(values, {setSubmitting}) => handleSubmit(values, setSubmitting)}

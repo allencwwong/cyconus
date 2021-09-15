@@ -14,11 +14,11 @@ const ProductList = () => {
   const history = useHistory();
 
   const handleAddProduct = () => {
-    history.push("/categories")
+    history.push("/products/cms/v1/categories")
   }
 
   const handleEditProduct = (id, category) => {
-    history.push(`/edit/${category}/${id}`)
+    history.push(`/products/cms/v1/edit/${category}/${id}`)
   }
 
   const handleDeleteProduct = (id, category) => {
@@ -26,7 +26,8 @@ const ProductList = () => {
     setShowDeleteModal(true)
   }
 
-  useEffect(() => {
+  const fetchData = () =>{
+    console.log('get data')
     fetch(`https://www.cyconus.com/products/api/productlist/?category=${viewCategory}`)
       .then(res => res.json())
       .then(dataAPI => {
@@ -34,7 +35,15 @@ const ProductList = () => {
         let first25Products = dataAPI.slice(0, 25)
         setFilteredData(first25Products)
       })
+  }
+
+  useEffect(() => {
+    fetchData()
   }, [])
+
+  useEffect(()=>{
+
+  },[filteredData])
 
   return (
     <div className="container">
@@ -98,7 +107,7 @@ const ProductList = () => {
           )
         })}
       </div>
-      { showDeleteModal ? <DeleteModal setShowDeleteModal={setShowDeleteModal} deleteItem={deleteItem}/> : <></>}
+      { showDeleteModal ? <DeleteModal setShowDeleteModal={setShowDeleteModal} deleteItem={deleteItem} fetchData={fetchData} /> : null}
     </div>
   )
 }
