@@ -31,7 +31,7 @@ const ProductList = () => {
     fetch(`https://www.cyconus.com/products/api/productlist/?category=${viewCategory}`)
       .then(res => res.json())
       .then(dataAPI => {
-        setData(dataAPI)
+        setData(dataAPI.reverse())
         let first25Products = dataAPI.slice(0, 25)
         setFilteredData(first25Products)
       })
