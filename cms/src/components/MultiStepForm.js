@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {useHistory} from 'react-router-dom';
 import { Formik } from 'formik';
 import {formInputs} from './formInputs';
+import PageLoader from './PageLoader';
 import FormStep from './FormStep';
 import ImageUploader from './ImageUploader';
 import './MultiStepForm.css';
@@ -21,18 +22,18 @@ const MultiStepForm = (props) => {
   const [initialValues, setInitialValues] = useState(formInputData || emptyInitVals)
   const [stepNum, setStepNum] = useState(0)
   const [uploadedImages,setUploadedImages] = useState([])
+  const [isPageLoaderShown, setIsPageLoaderShown] = useState(false)
 
   //to do: back button function
 
   const handleSubmit = (values, setSubmitting) => {
     setSubmitting(false)
-    console.log('sub')
+    setIsPageLoaderShown(true)
     let formData = new FormData()
-    console.log(uploadedImages)
     if(uploadedImages.length > 0) {
-      console.log(uploadedImages)
       uploadedImages.forEach((file,idx) => {
         if(file){
+          formData.append('isUpdate',  'true')
           formData.append('imagesIdx[]',  idx)
           formData.append('images[]', file, file.name )
         }
@@ -42,6 +43,9 @@ const MultiStepForm = (props) => {
     for(let key in values) {
       formData.append(key, values[key])
     }
+
+    // set url to be updating or create new api
+
     let url = submitType === "update" ? `https://www.cyconus.com/products/api/update/?category=${selectedCategory}&id=${formInputData.id}&api_key=Rental123` : `https://www.cyconus.com/products/api/new/?category=${selectedCategory.toLowerCase()}&api_key=Rental123`
 
     fetch(url, {
@@ -50,13 +54,19 @@ const MultiStepForm = (props) => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data);
+        console.log('Success:', data)
+        setIsPageLoaderShown(false)
+        alert('submit success')
         history.push('/')
       })
       .catch((error, data) => {
         console.error('Error:', error);
       });
 
+  }
+
+  if(isPageLoaderShown){
+    return <PageLoader />
   }
   return (
     <section className="form-container">
