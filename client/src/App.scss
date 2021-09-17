@@ -1,0 +1,32 @@
+.container{
+  margin: 0 auto;
+  margin-bottom: 20px;
+  @media (min-width: 576px){
+    max-width: 540px;
+  }
+  @media (min-width: 768px){
+    max-width: 720px;
+  }
+  @media (min-width: 1024px){
+    max-width: 960px;
+  }
+  @media (min-width: 1200px){
+      max-width: 1360px;
+  }
+}
+
+.bold{
+  font-weight: 600;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+.pl20{
+  padding-left: 20px;
+}
+
+button{
+  cursor: pointer;
+}
