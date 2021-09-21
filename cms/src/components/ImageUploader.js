@@ -40,7 +40,6 @@ const ImageUploader = (props) => {
   )
 
   const handleClickDelete = (idx) =>{
-    console.log('call delete img api...')
     const copyState = [...formInputDataImgs]
     copyState[idx] = ''
     setFormInputDataImgs(copyState)
@@ -48,9 +47,6 @@ const ImageUploader = (props) => {
   }
 
   const handleChange = (event,idx) => {
-    console.log(idx)
-    console.log(activeUploadImg)
-    console.log(event.target.files[0])
     const copyUploadedImagesState = [...uploadedImages]
     copyUploadedImagesState[idx] = event.target.files[0]
     setUploadedImages(copyUploadedImagesState)
@@ -70,7 +66,6 @@ const ImageUploader = (props) => {
         if(formInputData[imgIdx]){
           defaultActiveUploadImg[idx] = true
           imgsUrlData[idx] = {url: formInputData[imgIdx], name: `${formInputData.pid}-${formInputData.brand}-${idx}` }
-          console.log(imgsUrlData[idx])
         }
       })
     }

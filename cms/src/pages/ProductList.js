@@ -27,7 +27,6 @@ const ProductList = () => {
   }
 
   const fetchData = () =>{
-    console.log('get data')
     fetch(`https://www.cyconus.com/products/api/productlist/?category=${viewCategory}`)
       .then(res => res.json())
       .then(dataAPI => {

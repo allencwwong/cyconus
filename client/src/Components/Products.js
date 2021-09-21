@@ -12,20 +12,18 @@ const Products = () =>{
     const [modalData, setModalData] = useState(null)
 
     const handleClickProduct = async (pid) => {
-        const res = await fetch(`https://www.cyconus.com/products/api/product/?category=chairs&id=${pid}`)
         setIsShown(true)
+        const res = await fetch(`https://www.cyconus.com/products/api/product/?category=chairs&id=${pid}`)
         const productData = await res.json()
         setModalData(productData)
     }
 
     const handleCloseModal = () =>{
-        console.log('close')
         setIsShown(false)
     }
 
     useEffect(()=>{
         const fetchData = async () =>{
-            console.log('get data')
             const res = await fetch(`https://cyconus.com/products/api/productlist/?category=chairs`)
             if (!res.ok) {
                 const message = `An error has occured: ${res.status}`;
@@ -38,10 +36,6 @@ const Products = () =>{
             setProductsData(productApiData)
         })
     },[])
-
-    if(productsData){
-        console.log(productsData)
-    }
 
     return(
         <>
