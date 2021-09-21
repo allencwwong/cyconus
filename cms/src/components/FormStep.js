@@ -26,7 +26,6 @@ const FormStep = (props) => {
   }
 
   if(stepNum === 0) {
-    console.log('step 0')
     return (
       <Form onSubmit={handleSave} className="form">
         {formInputs.map((item, idx)=> {

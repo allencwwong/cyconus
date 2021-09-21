@@ -10,7 +10,6 @@ const DeleteModal = (props) => {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res)
         alert(`deleted item#${deleteItem.id} from ${deleteItem.category}`)
         setShowDeleteModal(false)
         fetchData()

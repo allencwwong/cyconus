@@ -54,7 +54,6 @@ const MultiStepForm = (props) => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data)
         setIsPageLoaderShown(false)
         alert('submit success')
         history.push('/')
