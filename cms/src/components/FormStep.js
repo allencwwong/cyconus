@@ -1,13 +1,12 @@
 import React from 'react';
-import { Form, FieldArray } from 'formik';
+import { Form, FieldArray, Field, ErrorMessage } from 'formik';
 import {formInputs} from './formInputs';
 import Options from './Options';
 import './FormStep.css';
 
 const FormStep = (props) => {
-  const { stepNum, setStepNum, setInitialValues, handleSubmit, handleChange, handleBlur, values, isSubmitting, setImgsFileData, imgsFileData } = props;
+  const { stepNum, setStepNum, setInitialValues, handleSubmit, handleChange, handleBlur, values, isSubmitting } = props;
   const data = Object.entries(values)
-  const imgs = ['img1', 'img2', 'img3']
 
   const handleEdit = (e) => {
     e.preventDefault();
@@ -37,6 +36,16 @@ const FormStep = (props) => {
                   <textarea type="text" id={item} name={item} onChange={handleChange} onBlur={handleBlur} value={values[item]} rows="5"/>
                 </div>
               )
+            } else if(item === 'item_condition') {
+              return (
+                <div key={item+idx} className="inputType">
+                  <label>{item}</label>
+                  <Field as="select" name="product-condition">
+                    <option value="new">New</option>
+                    <option value="used">Used</option>
+                  </Field>
+                </div>
+              )
             } else {
               let inputAttr = {
                 type: 'text',
@@ -51,6 +60,7 @@ const FormStep = (props) => {
                 <div key={item+idx} className="inputType">
                   <label>{item}</label>
                   <input {...inputAttr}/>
+                  <ErrorMessage name={item}/>
                 </div>
               )
             }
