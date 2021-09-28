@@ -43,7 +43,6 @@ const ProductList = () => {
   useEffect(()=>{
 
   },[filteredData])
-
   return (
     <div className="container">
       <header>
@@ -80,6 +79,9 @@ const ProductList = () => {
             <p>pID</p>
             <p>Image</p>
             <p>Brand</p>
+            <p>Model</p>
+            <p>Color</p>
+            <p>Size</p>
             <p>Price 1</p>
             <p>Price 2</p>
             <Pagination data={data} setFilteredData={setFilteredData}/>
@@ -94,8 +96,11 @@ const ProductList = () => {
               {/* <img src={product?.img || 'https://cyconus.com/products/uploader/uploads/no-img.jpg'} alt="product view" className="product-avatar" /> */}
               <p>Image</p>
               <p>{product.brand}</p>
-              <p>{`$${product.price1}`}</p>
-              <p>{product.price2 ? `$${product.price2}` : "-"}</p>
+              <p>{product.model}</p>
+              <p>{product.color}</p>
+              <p>{product.size}</p>
+              <p>{parseInt(product.price1) ? `$${product.price1}` : "-"}</p>
+              <p>{parseInt(product.price2) ? `$${product.price2}` : "-"}</p>
               <div className="btn-wrapper">
                 <button onClick={() => {handleEditProduct(product.id, product.category)}}>Edit</button>
               </div>

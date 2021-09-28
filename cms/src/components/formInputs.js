@@ -6,7 +6,6 @@ export const formInputs = [
   "model",
   "type",
   "color",
-  "num_of_imgs",
   "description",
   "qty",
   "price_name1",

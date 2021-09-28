@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useHistory} from 'react-router-dom';
 import { Formik } from 'formik';
+import * as Yup from 'yup';
 import {formInputs} from './formInputs';
 import PageLoader from './PageLoader';
 import FormStep from './FormStep';
@@ -64,6 +65,18 @@ const MultiStepForm = (props) => {
 
   }
 
+  const ProductSchema = Yup.object().shape({
+    qty: Yup.number()
+      .typeError('Must only contain numbers')
+      .nullable(true),
+    price1: Yup.number()
+      .typeError('Must only contain numbers')
+      .nullable(true),
+    price2: Yup.number()
+      .typeError('Must only contain numbers')
+      .nullable(true)
+  })
+
   if(isPageLoaderShown){
     return <PageLoader />
   }
@@ -73,6 +86,7 @@ const MultiStepForm = (props) => {
       <button onClick={() => handleClickBack('catrgories')} className="back-btn">Back</button>
       <Formik
           initialValues={initialValues}
+          validationSchema={ProductSchema}
           onSubmit={(values, {setSubmitting}) => handleSubmit(values, setSubmitting)}
         >
           {({

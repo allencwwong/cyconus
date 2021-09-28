@@ -11,7 +11,7 @@ const SearchBar = (props) => {
       setFilteredData(data.slice(0, 25))
     } else {
       let newData = data.filter(item => {
-        return item.pid.includes(e.target.value) || item.brand.includes(e.target.value)
+        return item.pid.toLowerCase().includes(e.target.value.toLowerCase()) || item.brand.toLowerCase().includes(e.target.value.toLowerCase()) || item.model.toLowerCase().includes(e.target.value.toLowerCase()) || (item.color && item.color.toLowerCase().includes(e.target.value.toLowerCase())) || (item.size && item.size.toLowerCase().includes(e.target.value.toLowerCase()))
       })
       newData = newData.slice(0, 25)
       setFilteredData(newData)

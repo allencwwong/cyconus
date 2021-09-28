@@ -1,18 +1,5 @@
 .pagination {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: end;
-  align-items: end;
+  grid-template-columns: auto 1fr auto 1fr;
   margin-left: auto;
-}
-
-.pagination button {
-  float: left;
-  padding: 8px 16px;
-  align-self: center;
-  color: #000;
-}
-
-.pagination .next-btn {
-  justify-self: left;
 }
