@@ -57,7 +57,7 @@ const MultiStepForm = (props) => {
       .then(data => {
         setIsPageLoaderShown(false)
         alert('submit success')
-        history.push('/')
+        history.push('/products/cms/v1')
       })
       .catch((error, data) => {
         console.error('Error:', error);

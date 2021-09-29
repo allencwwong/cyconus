@@ -8,7 +8,7 @@ const EditProduct = () => {
   const history = useHistory()
 
   const handleClickBack = () => {
-    history.push('/')
+    history.push('/products/cms/v1')
   }
 
   useEffect(() => {
