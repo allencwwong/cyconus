@@ -18,7 +18,6 @@ const EditProduct = () => {
         for(let key in data) {
           if(!data[key]) data[key] = ""
         }
-        console.log(data)
         data['options'] = []
         setFormInputData(data)
       })

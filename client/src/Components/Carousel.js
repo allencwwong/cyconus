@@ -12,7 +12,7 @@ const BsCarousel = ({imgUrls}) => {
 
     const setSlides = () =>{
         imgUrls.forEach(imgUrl =>{
-            if(imgUrl){
+            if(imgUrl && imgUrl !== 'no-img.png'){
                 imgSlides.push(
                     <Carousel.Item>
                         <img

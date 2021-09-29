@@ -5,7 +5,7 @@ import Options from './Options';
 import './FormStep.css';
 
 const FormStep = (props) => {
-  const { stepNum, setStepNum, setInitialValues, handleSubmit, handleChange, handleBlur, values, isSubmitting } = props;
+  const { stepNum, setStepNum, setInitialValues, handleSubmit, handleChange, handleBlur, values, isSubmitting, formErrors } = props;
   const data = Object.entries(values)
 
   const handleEdit = (e) => {
@@ -57,11 +57,13 @@ const FormStep = (props) => {
               }
 
               return (
-                <div key={item+idx} className="inputType">
-                  <label>{item}</label>
-                  <input {...inputAttr}/>
-                  <ErrorMessage name={item}/>
-                </div>
+                <>
+                  <div key={item+idx} className="inputType">
+                    <label>{item}</label>
+                    <input {...inputAttr}/>
+                  </div>
+                  {formErrors[item] ? (<p className="form-warning"><ErrorMessage name={item}/></p>): null}
+                </>
               )
             }
           } else {
@@ -81,7 +83,6 @@ const FormStep = (props) => {
       </Form>
     )
   } else {
-    console.log(data)
     return (
       <Form onSubmit={handleSubmit} className="confirm">
         <h2>Confirmation</h2>

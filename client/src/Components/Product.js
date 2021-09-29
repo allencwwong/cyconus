@@ -1,6 +1,6 @@
 import './Product.scss'
 
-const Product = ({id,pid, brand, model, img, type, qty, price_name1,price1,price_name2,price2,handleClickProduct}) =>{
+const Product = ({id,pid, brand, model, img, type, qty, price_name1,price1,price_name2,price2,handleClickProduct,size}) =>{
             if(qty === 'SO' || parseInt(qty) > 0){
                 return (
                     <div className="product-item">
@@ -40,6 +40,15 @@ const Product = ({id,pid, brand, model, img, type, qty, price_name1,price1,price
                                 {type.split(',').map(item=>(<li>{item}</li>))}
                             </ul>)
                         }
+                        {size && (
+                            <ul className="product-item-list">
+                                <li>
+                                    <p className="label inline-block">Size</p>
+                                    <h3 className="title inline-block pl20">{size}</h3>
+                                </li>
+                            </ul>
+                        )}
+
                         <div className="product-item-list footer">
                             <div className="product-item-container" >
                                 <button onClick={()=>handleClickProduct(id)}>View detail</button>

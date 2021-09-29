@@ -3,7 +3,6 @@ import BsCarousel from './Carousel'
 import './Modal.scss'
 
 const BsModal = ({ closeModal, isShown, modalData }) => {
-  console.log(modalData);
   if(modalData){
       const imgUrls = [modalData.img,modalData.img2,modalData.img3,modalData.img4,modalData.img5]
       return (
