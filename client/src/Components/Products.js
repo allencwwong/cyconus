@@ -42,7 +42,7 @@ const Products = () =>{
         <BsModal isShown={isShown} closeModal={handleCloseModal} modalData={modalData}/>
         <ProductsHeader />
         <section className="container product-list">
-            { productsData ? productsData.map((product,idx)=>(<Product key={`${product.pid}-${idx}`} {...product} handleClickProduct={handleClickProduct} />)) : <Loader /> }
+            { productsData ? productsData.sort((a,b)=>a['row_order'] - b['row_order']).map((product,idx)=>(<Product key={`${product.pid}-${idx}`} {...product} handleClickProduct={handleClickProduct} />)) : <Loader /> }
         </section>
         </>
     )

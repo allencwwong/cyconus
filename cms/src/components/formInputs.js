@@ -1,7 +1,7 @@
 // convert to dynamic titles later
 
 export const formInputs = [
-  "insert_before_id",
+  "insert_before_rid",
   "pid",
   "brand",
   "model",

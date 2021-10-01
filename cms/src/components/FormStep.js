@@ -5,7 +5,7 @@ import Options from './Options';
 import './FormStep.css';
 
 const FormStep = (props) => {
-  const { stepNum, setStepNum, setInitialValues, handleSubmit, handleChange, handleBlur, values, isSubmitting, formErrors } = props;
+  const { stepNum, setStepNum, setInitialValues, handleSubmit, handleChange, handleBlur, values, isSubmitting, formErrors, formInputData } = props;
   const data = Object.entries(values)
 
   const handleEdit = (e) => {
@@ -27,6 +27,11 @@ const FormStep = (props) => {
   if(stepNum === 0) {
     return (
       <Form onSubmit={handleSave} className="form">
+        { formInputData?.row_order ? (
+              <div class="inputType"><label>Row Order</label>
+                <input type="text" value={formInputData['row_order']} disabled />
+              </div>
+        ) : null}
         {formInputs.map((item, idx)=> {
           if(item !== 'options') {
             if(item === 'description') {

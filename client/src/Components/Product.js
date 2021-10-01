@@ -1,6 +1,6 @@
 import './Product.scss'
 
-const Product = ({id,pid, brand, model, img, type, qty, price_name1,price1,price_name2,price2,handleClickProduct,size}) =>{
+const Product = ({id,pid, brand, model, img, type, qty, price_name1,price1,price_name2,price2,handleClickProduct,size, row_order}) =>{
             if(qty === 'SO' || parseInt(qty) > 0){
                 return (
                     <div className="product-item">
@@ -16,6 +16,8 @@ const Product = ({id,pid, brand, model, img, type, qty, price_name1,price1,price
                             <li>
                                 <p className="label inline-block">Product Id</p>
                                 <h3 className="title inline-block pl20">{pid}</h3>
+                                <p className="label inline-block pl20">Rid</p>
+                                <h3 className="title inline-block pl20">{row_order}</h3>
                             </li>
                             <li>
                                 <p className="label">Brand</p>

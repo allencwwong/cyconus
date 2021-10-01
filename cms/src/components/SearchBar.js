@@ -10,10 +10,12 @@ const SearchBar = (props) => {
     if(e.target.value === '') {
       setFilteredData(data.slice(0, 25))
     } else {
+      console.log(e.target.value)
       let newData = data.filter(item => {
-        return item.pid.toLowerCase().includes(e.target.value.toLowerCase()) || item.brand.toLowerCase().includes(e.target.value.toLowerCase()) || item.model.toLowerCase().includes(e.target.value.toLowerCase()) || (item.color && item.color.toLowerCase().includes(e.target.value.toLowerCase())) || (item.size && item.size.toLowerCase().includes(e.target.value.toLowerCase()))
+        return item?.pid?.toLowerCase().includes(e.target.value.toLowerCase()) || item?.brand?.toLowerCase().includes(e.target.value.toLowerCase()) || item?.model?.toLowerCase().includes(e.target.value.toLowerCase()) || (item?.color?.toLowerCase().includes(e.target.value.toLowerCase())) || (item?.size?.toLowerCase().includes(e.target.value.toLowerCase()))
       })
       newData = newData.slice(0, 25)
+      console.log(newData)
       setFilteredData(newData)
     }
   }
