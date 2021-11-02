@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FieldArray, Field, ErrorMessage } from 'formik';
+import { Form, FieldArray, Field } from 'formik';
 import {formInputs} from './formInputs';
 import Options from './Options';
 import './FormStep.css';
@@ -67,7 +67,7 @@ const FormStep = (props) => {
                     <label>{item}</label>
                     <input {...inputAttr}/>
                   </div>
-                  {formErrors[item] ? (<p className="form-warning"><ErrorMessage name={item}/></p>): null}
+                  {formErrors[item] ? (<p className="form-warning">{formErrors[item]}</p>): null}
                 </>
               )
             }
