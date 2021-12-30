@@ -8,8 +8,8 @@ import FormStep from './FormStep';
 import ImageUploader from './ImageUploader';
 import './MultiStepForm.css';
 
-const MultiStepForm = (props) => {
-  const { handleClickBack, selectedCategory, formInputData, submitType } = props
+const MultiStepForm = ({handleClickBack, selectedCategory, formInputData, submitType, lastRid}) => {
+  lastRid = parseInt(lastRid)
   const history = useHistory();
   // create emptyInitVals for initial state (below)
   let emptyInitVals = {}
@@ -43,7 +43,12 @@ const MultiStepForm = (props) => {
     }
 
     for(let key in values) {
-        formData.append(key, values[key])
+      console.log(key,':',!values[key])
+        if(key === 'insert_before_rid' && !values[key]){
+          formData.append(key, lastRid+1)
+        }else{
+          formData.append(key, values[key])
+        }
     }
 
     // set url to be updating or create new api
@@ -66,6 +71,11 @@ const MultiStepForm = (props) => {
   }
 
   const ProductSchema = Yup.object().shape({
+    insert_before_rid: Yup.number()
+      .typeError('Must be a valid Number')
+      .min(1, 'Min value is 1')
+      .max(lastRid, `Max value is ${lastRid}`)
+      .nullable(true),
     qty: Yup.number()
       .typeError('Must only contain numbers')
       .nullable(true),

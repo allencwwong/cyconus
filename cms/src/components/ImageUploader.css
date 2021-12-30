@@ -20,7 +20,10 @@
 }
 
 .img-container .img-upload img{
-  width: 100%
+  max-width: 250px;
+  max-height: 260px;
+  margin: 0 auto;
+  display: block;
 }
 
 .img-upload.img-upload-add{

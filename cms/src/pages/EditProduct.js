@@ -15,6 +15,7 @@ const EditProduct = () => {
     fetch(`https://www.cyconus.com/products/api/product/?category=${category}&id=${id}`)
       .then(res => res.json())
       .then(data => {
+        console.log(data)
         for(let key in data) {
           if(!data[key]) data[key] = ""
         }
