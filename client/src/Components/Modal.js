@@ -33,7 +33,7 @@ const BsModal = ({ closeModal, isShown, modalData }) => {
                                 <div className="row">
                                     <div className="col-4">
                                         <span className="label">condition:</span> 
-                                        <span>{modalData.condition}</span>
+                                        <span>{modalData['item_condition']}</span>
                                     </div>
                                     <div className="col-4">
                                         <span className="label">color:</span> 

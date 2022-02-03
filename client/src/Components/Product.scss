@@ -20,9 +20,15 @@
     }
 
     .title{
-        font-size: 16px;
+        font-size: 14px;
         margin: 0;
         font-weight: 600;
+    }
+
+    @media screen and (min-width: 576px) {
+        .title{
+            font-size: 16px;
+        }
     }
 
     .product-item-header{
@@ -62,7 +68,7 @@
         }
 
         li{
-            padding: 5px 0 5px 20px;
+            padding: 8px 10px;
         }
 
         .product-item-container{

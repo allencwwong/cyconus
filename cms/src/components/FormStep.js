@@ -42,12 +42,17 @@ const FormStep = (props) => {
                 </div>
               )
             } else if(item === 'item_condition') {
+              console.log(values[item],'item c', values)
               return (
                 <div key={item+idx} className="inputType">
                   <label>{item}</label>
-                  <Field as="select" name="product-condition">
-                    <option value="new">New</option>
-                    <option value="used">Used</option>
+                  <Field as="select" name="item_condition">
+                    {item['item_condition']?.toLowerCase() === 'used' ? (
+                      <><option value="used">Used</option><option value="new">New</option></>
+                    ) : (
+                      <><option value="new">New</option><option value="used">Used</option></>
+                    )}
+                    
                   </Field>
                 </div>
               )

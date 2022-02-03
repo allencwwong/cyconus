@@ -1,7 +1,7 @@
 import './Product.scss'
 
-const Product = ({id,pid, brand, model, img, type, qty, price_name1,price1,price_name2,price2,handleClickProduct,size, row_order}) =>{
-            if(qty === 'SO' || parseInt(qty) > 0){
+const Product = ({id,pid, brand, model, img, type, qty, price_name1,price1,price_name2,price2,handleClickProduct,size, row_order,condition}) =>{
+    if(qty === 'SO' || parseInt(qty) > 0){
                 return (
                     <div className="product-item">
                         <div className="product-item-header">
@@ -24,14 +24,18 @@ const Product = ({id,pid, brand, model, img, type, qty, price_name1,price1,price
                                 <h3 className="title">{model}</h3>
                             </li>
                             <li>
+                                <p className="label">Condition</p>
+                                <h3 className="title">{condition}</h3>
+                            </li>
+                            <li>
                                 <p className="label">Pricing</p>
                                 <div className="product-item-price">
                                     <div>
-                                        {price_name1 ? (<h3 className="sub-title">{price_name1}</h3>) : null}
+                                        <div dangerouslySetInnerHTML={{__html:price_name1}}></div>
                                         {price1 ? (<p className={`sub-title ${price_name1 ? '' : 'bold'}`}>${price1}</p> ): null }
                                     </div>
                                     <div>
-                                        {price_name2 ? (<h3 className="sub-title">{price_name2}</h3>) : null}
+                                        <div dangerouslySetInnerHTML={{__html:price_name2}}></div>
                                         {price2 ? (<p className={`sub-title ${price_name2 ? '' : 'bold'}`}>${price2}</p>) : null}
                                     </div>
                                 </div>
