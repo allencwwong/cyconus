@@ -77,19 +77,23 @@ const FormStep = (props) => {
               )
             }
           } else {
-            return (
-              <FieldArray name="options" render={arrayHelpers => (
-                <>
-                  {values[item].map((option, idx) => {
-                    return (<Options key={option['option_name']+idx} values={option} idx={idx} /> )
-                  })}
-                  <button key={idx} className="add-option" onClick={(e) => {handleAddOption(e, arrayHelpers)}}>Add Option Field</button>
-                </>
-              )} />
-            )
+            // return (
+            //   <FieldArray name="options" render={arrayHelpers => (
+            //     <>
+            //       {values[item].map((option, idx) => {
+            //         return (<Options key={option['option_name']+idx} values={option} idx={idx} /> )
+            //       })}
+            //       <button key={idx} className="add-option" onClick={(e) => {handleAddOption(e, arrayHelpers)}}>Add Option Field</button>
+            //     </>
+            //   )} />
+            // )
           }
         })}
-        <button className="save">Save</button>
+        <div className="submit-controller">
+          <div className='submit-button-group'>
+            <button className="save">Save</button>
+          </div>
+        </div>
       </Form>
     )
   } else {
@@ -108,8 +112,12 @@ const FormStep = (props) => {
               return (<p key={item + idx}></p>)
             }
           })}
-        <button onClick={handleEdit}>Edit</button>
-        <button type="submit" disabled={isSubmitting} >Submit</button>
+        <div className="submit-controller">
+          <div className='submit-button-group'>
+            <button onClick={handleEdit}>Back to Edit</button>
+            <button type="submit" disabled={isSubmitting} >Submit</button>
+          </div>
+        </div>
     </Form>
     )
   }

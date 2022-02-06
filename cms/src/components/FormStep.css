@@ -21,18 +21,22 @@
 .form .add-option,
 .form .save {
   display: block;
-  float: right;
   margin-right: 25px;
 }
 
 .confirm-grid-container {
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: 120px auto;
   column-gap: 40px;
+  border-bottom: 1px solid #aaa;
 }
 
 .confirm-grid-item1 {
-  text-align: right;
+  text-align: left;
+}
+
+.confirm-grid-item2 {
+  font-weight: 600;
 }
 
 .input-group{
@@ -48,3 +52,33 @@
   overflow: scroll;
 }
 
+.submit-controller{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #333;
+  width: 100%;
+  height: 48px;
+  opacity: 0.9;
+}
+
+.submit-controller .submit-button-group{
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto !important;
+  left: 0;
+  right: 0;
+  text-align: center;
+  width: 420px;
+}
+
+.submit-controller button{
+  border-color: #fff;
+  color: #fff;
+  margin: 8px auto;
+  display: inline-block !important;
+}
+
+.submit-controller button + button{
+  margin-left: 20px;
+}
