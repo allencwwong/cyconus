@@ -28,7 +28,7 @@ const FormStep = (props) => {
     return (
       <Form onSubmit={handleSave} className="form">
         { formInputData?.row_order ? (
-              <div class="inputType"><label>Row Order</label>
+              <div class="inputType span-sixth"><label>Row Order</label>
                 <input type="text" value={formInputData['row_order']} disabled />
               </div>
         ) : null}
@@ -36,15 +36,14 @@ const FormStep = (props) => {
           if(item !== 'options') {
             if(item === 'description') {
               return (
-                <div key={item+idx} className="inputType">
+                <div key={item+idx} className="inputType span-full">
                   <label>{item}</label>
                   <textarea type="text" id={item} name={item} onChange={handleChange} onBlur={handleBlur} value={values[item]} rows="5"/>
                 </div>
               )
             } else if(item === 'item_condition') {
-              console.log(values[item],'item c', values)
               return (
-                <div key={item+idx} className="inputType">
+                <div key={item+idx} className="inputType span-third">
                   <label>{item}</label>
                   <Field as="select" name="item_condition">
                     {item['item_condition']?.toLowerCase() === 'used' ? (
@@ -66,9 +65,26 @@ const FormStep = (props) => {
                 value: values[item]
               }
 
+              // TODO: better way to setup form grid
+              const spanHalf = [2,4,5,6,7,8,9,10,11,12,13,14]
+              const spanThird = []
+              const spanSixth = [0,1,3]
+
+              let span = ''
+              if(spanHalf.includes(idx)){
+                span = 'span-half'
+              } else if(spanThird.includes(idx)){
+                span = 'span-third'
+              } else if (spanSixth.includes(idx)){
+                span = 'span-sixth'
+              }
+              else{
+                span = 'span-full'
+              }
+
               return (
                 <>
-                  <div key={item+idx} className="inputType">
+                  <div key={item+idx} className={`inputType ${span}`}>
                     <label>{item}</label>
                     <input {...inputAttr}/>
                   </div>
@@ -77,6 +93,7 @@ const FormStep = (props) => {
               )
             }
           } else {
+            return null
             // return (
             //   <FieldArray name="options" render={arrayHelpers => (
             //     <>

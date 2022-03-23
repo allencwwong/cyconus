@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import Pagination from '../components/Pagination';
 import DeleteModal from '../components/DeleteModal';
@@ -45,6 +45,7 @@ const ProductList = () => {
   },[filteredData])
   return (
     <div className="container">
+      <Link to="/products/cms/v1/changelog" className="changelog">Change log</Link>
       <header>
         <div className="header-top">
           <h2>Product List</h2>

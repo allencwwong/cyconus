@@ -1,0 +1,9 @@
+.changelog-wrapper .back-btn{
+    margin-left: 30px;
+    margin-top: 15px;
+}
+
+.changelog-wrapper .back-btn a{
+    text-decoration: none;
+    color: inherit;
+}
