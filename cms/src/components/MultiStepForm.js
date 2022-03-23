@@ -10,6 +10,7 @@ import './MultiStepForm.css';
 
 const MultiStepForm = ({handleClickBack, selectedCategory, formInputData, submitType, lastRid}) => {
   lastRid = parseInt(lastRid)
+  console.log(lastRid)
   const history = useHistory();
   // create emptyInitVals for initial state (below)
   let emptyInitVals = {}

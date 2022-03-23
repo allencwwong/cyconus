@@ -1,3 +1,7 @@
+.changelog-wrapper{
+    margin-left: 30px;
+}
+
 .changelog-wrapper .back-btn{
     margin-left: 30px;
     margin-top: 15px;
@@ -6,4 +10,15 @@
 .changelog-wrapper .back-btn a{
     text-decoration: none;
     color: inherit;
+}
+
+code{
+    background-color: #eaeaea;
+    font-size: 12px;
+    padding: 2px 8px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
